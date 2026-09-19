@@ -1,0 +1,46 @@
+# Inventory Management Feature Progress
+
+## COMPLETED
+1. **Database Schema**: Added InventoryItem, RecipeItem, and InventoryTransaction models to Prisma.
+2. **Backend Services**: Implemented inventory.service.ts with:
+   - Stock deduction on order confirmation.
+   - Automatic product/variant availability toggle based on stock.
+   - Transaction logging.
+   - Low stock detection.
+3. **Validations**: Created Zod schemas for all inventory-related inputs.
+4. **Dashboard Integration**:
+   - Created /inventory route and page.
+   - Added "Inventory" to Sidebar navigation.
+5. **Core UI Components**:
+   - InventoryList: Modern, clean table view with search and filters.
+   - InventoryItemForm: For creating new ingredients (Supports Base64 file attachments for images).
+   - StockAdjustmentDialog: "Stock In" and "Stock Out" quick actions.
+6. **Recipe Management UI**: 
+   - Added "Recipe" configuration button to Product cards.
+   - Built dynamic Recipe Manager to link Products to InventoryItems.
+   - Supports variant-specific ingredients.
+7. **Inventory Transaction History**:
+   - Implemented side-sheet history view showing past stock movements with icons and timestamps.
+
+## BUG FIXES
+- Fixed Next.js serialization error by converting Prisma `Decimal` and `Date` objects to plain types before returning from Server Actions.
+- Fixed silent failure in Inventory Item creation by correctly passing `businessId` and `branchId` to the form.
+- Improved error handling in forms with toast notifications for validation errors.
+
+9. **Inventory Categories**:
+   - Split inventory categories from product categories.
+   - Created dedicated /inventory-categories management page.
+   - Updated Sidebar navigation.
+   - Updated Inventory form to select inventory-specific categories.
+
+## NEXT STEPS (Pending)
+1. **Wastage Reporting**:
+   - Create a dedicated view to see how much food is being wasted.
+2. **Yield & Unit Conversion**:
+   - Add logic for handling buying in KG but using in Grams.
+3. **Low Stock Notifications**:
+   - Add a widget to the main Dashboard to alert the owner of items running low.
+
+## CURRENT STATE
+- System is fully functional for end-to-end stock tracking and recipe-based deduction.
+- UI is consistent with the modern, simple, and clean project style.
